@@ -30,7 +30,7 @@ class FirstWindow(Screen):
     def progress(self):
         text = self.ids.Inp.text
 
-
+text2 = ""
 class SecondWindow(Screen):
     def callback4(self):
         try:
@@ -38,7 +38,9 @@ class SecondWindow(Screen):
         except:
             show_popup()
     def progress2(self):
+        global text2
         text2 = self.ids.InpP.text
+        return text2
 
 
 class ThirdWindow(Screen):
