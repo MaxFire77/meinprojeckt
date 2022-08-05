@@ -1,0 +1,137 @@
+#:import utils kivy.utils
+#:import Factory kivy.factory.Factory
+
+<MyPopup@Popup>
+    auto_dismiss: False
+    size_hint: 0.6, 0.2
+    pos_hint: {"x":0.2, "top":0.9}
+    title: "Conection Error"
+    
+    Label:
+        markup: True
+        text: "[size=24][b]CONNECTION ERROR[/b][/size]"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "center_y":0.1}
+
+WindowManager:
+    FirstWindow:
+    SecondWindow:
+    ThirdWindow:
+
+<FirstWindow>:
+    name: "first"
+
+    MyBL:
+        orientation: "vertical"
+        size_hint: (0.92, 0.95)
+        pos_hint: {"center_x":0.5, "center_y":0.5}
+        spacing: 2
+
+        TextInput:
+            id: Inp
+            multiline: True
+            padding_y: (5,5)
+            size_hint: (1, 0.5)
+            on_text: root.progress()
+        
+        Button:
+            markup: True
+            text: "[size=30][b]Enter[/b][/size]"
+            bold: True
+            background_color:'#C200BB'
+            size_hint: (1,0.5)
+            on_press: root.callback()
+        Button:
+            markup: True
+            text: "[size=25][b]Volume-Max[/b][/size]"
+            bold: True
+            background_color:'#C200BB'
+            size_hint: (1,0.5)
+            on_press: root.callback2()
+        Button:
+            markup: True
+            text: "[size=25][b]Show error[/b][/size]"
+            bold: True
+            background_color:'#C200BB'
+            size_hint: (1,0.5)
+            on_press: root.callback3()
+        Button:
+            markup: True
+            text: "[size=25][b]Next[/b][/size]"
+            bold: True
+            background_color:'#8D00D4'
+            size_hint: (1,0.5)
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "down"
+
+<SecondWindow>:
+    name: "second"
+    
+    MyBL:
+        orientation: "vertical"
+        size_hint: (0.92, 0.95)
+        pos_hint: {"center_x":0.5, "center_y":0.5}
+
+        TextInput:
+            id: InpP
+            multiline: True
+            padding_y: (5,5)
+            size_hint: (1, 0.5)
+            on_text: root.progress2()
+
+        Button:
+            markup: True
+            text: "[size=30][b]Enter[/b][/size]"
+            bold: True
+            background_color:'#C200BB'
+            size_hint: (1,0.5)
+            on_press: root.callback4()
+
+        Button:
+            markup: True
+            text: "[size=25][b]Go Back[/b][/size]"
+            bold: True
+            background_color:'#8D00D4'
+            size_hint: (1,0.5)
+            on_release:
+                app.root.current = "first"
+                root.manager.transition.direction = "up"
+        Button:
+            markup: True
+            text: "[size=25][b]Next[/b][/size]"
+            bold: True
+            background_color:'#8D00D4'
+            size_hint: (1,0.5)
+            on_release:
+                app.root.current = "third"
+                root.manager.transition.direction = "down"
+
+<ThirdWindow>:
+    name: "third"
+    
+    MyBL:
+        orientation: "vertical"
+        size_hint: (0.92, 0.95)
+        pos_hint: {"center_x":0.5, "center_y":0.5}
+
+        Button:
+            markup: True
+            text: "[size=25][b]DELETE[/b][/size]"
+            bold: True
+            background_color:'#C200BB'
+            size_hint: (1,0.5)
+            pos_hint: {"center_x":0.5, "center_y":0.5}
+            on_press: root.callback5()
+
+        Button:
+            markup: True
+            text: "[size=25][b]Go back[/b][/size]"
+            bold: True
+            background_color:'#8D00D4'
+            pos_hint: {"center_x":0.5, "center_y":0.5}
+            size_hint: (1,0.5)
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "up"
+        
